@@ -1,0 +1,21 @@
+{{extend 'layout.html'}}
+<script>
+function find_user()
+{
+	var k = document.getElementById("user_search").value
+	document.getElementById("user_search").value = ""
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
+	{
+            if(xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		document.getElementById("mylist").innerHTML=xmlhttp.responseText;
+	    }
+	}
+	xmlhttp.open('GET','http://127.0.0.1:8000/project/meet/eight?start='+'name'+'/'+k,true);
+	xmlhttp.send();
+}
+</script>
+<input id="user_search" type="text">
+</br>
+<button onclick="find_user()">Search</button>

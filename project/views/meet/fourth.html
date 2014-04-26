@@ -1,0 +1,68 @@
+{{extend 'layout.html'}}
+<script>
+function call(id){
+	var xmlhttp;
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
+	{
+            if(xmlhttp.readyState==4 && xmlhttp.status==200)
+		document.getElementById("set").innerHTML=xmlhttp.responseText;
+	}
+	xmlhttp.open('GET','http://127.0.0.1:8000/project/meet/sixth?start='+'{{=name}}'+'/'+id,true);
+	xmlhttp.send();
+}
+function find_user()
+{
+	var k = document.getElementById("user_search").value
+	document.getElementById("user_search").value = ""
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
+	{
+            if(xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		document.getElementById("mylist").innerHTML=xmlhttp.responseText;
+	    }
+	}
+	xmlhttp.open('GET','http://127.0.0.1:8000/project/meet/eight?start='+'{{=name}}'+'/'+k,true);
+	xmlhttp.send();
+}
+function addUser()
+{
+	var k = document.getElementById("add_user").value;
+	document.getElementById("add_user").value = "";
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function()
+	{
+		if(xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+		    document.getElementById("user_list").innerHTML=xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open('GET','http://127.0.0.1:8000/project/meet/ninth?start='+'{{=name}}/'+k,true);
+	xmlhttp.send();
+}
+</script>
+<div id="mylist">
+<ul>
+{{for i in text:}}
+<INPUT type="button" id={{=i.body}}  value = {{=i.time}}
+onclick="call({{=i.id}})"/><br>
+{{pass}}
+</ul>
+</div>
+<div id="set"></div>
+<div id="user_list">
+<ul style="position:absolute;right:-500px">
+{{for i in names:}}
+{{=i.user_name}}</br>
+{{pass}}
+</ul>
+</div>
+{{=form}}
+user_search:<input id="user_search" type="text"></br>
+<button onclick="find_user()">Search</button>
+<h3><a href = "adduser?meeting_name={{=name}}" style="font-size:30px">AddUser</a></h3><br/>
+{{=form1}}
+<br>
+<br>
+<br>

@@ -1,0 +1,7 @@
+{{extend 'layout.html'}}
+<ul>
+{{for i in text:}}
+{{=LI(A(i.id,_href=URL("sixth",args=i.id)))}}
+{{pass}}
+<div id="set"></div>
+</ul>

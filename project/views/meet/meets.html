@@ -1,0 +1,24 @@
+{{extend 'layout.html'}}
+<script>
+function call(id){
+	var xmlhttp;
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
+	{
+            if(xmlhttp.readyState==4 && xmlhttp.status==200)
+		document.getElementById("set").innerHTML=xmlhttp.responseText;
+	}
+	xmlhttp.open('GET','http://127.0.0.1:8000/project/meet/showmeet?start='+id,true);
+	xmlhttp.send();
+}
+</script>
+ <div id="mylist">
+ <ul>
+ {{for i in text:}}
+ <INPUT type="button" id={{=i.meeting_list.id}}  value = {{=i.meeting_list.meeting_name}}
+ onclick="call({{=i.meeting_list.id}})"/><br>
+ {{pass}}
+ </ul>
+ </div>
+ <div id="set"></div>
+

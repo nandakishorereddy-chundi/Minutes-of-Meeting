@@ -1,0 +1,861 @@
+timestamp: 2014-04-17T16:28:45.047729
+CREATE TABLE auth_user(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    username CHAR(512),
+    first_name CHAR(512),
+    last_name CHAR(512),
+    email CHAR(512),
+    password CHAR(512),
+    created_on TIMESTAMP,
+    modified_on TIMESTAMP,
+    registration_key CHAR(512),
+    reset_password_key CHAR(512),
+    registration_id CHAR(512)
+);
+success!
+timestamp: 2014-04-17T16:28:45.152943
+CREATE TABLE auth_group(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    role CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2014-04-17T16:28:45.216436
+CREATE TABLE auth_membership(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2014-04-17T16:28:45.296311
+CREATE TABLE auth_permission(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    group_id INTEGER REFERENCES auth_group (id) ON DELETE CASCADE,
+    name CHAR(512),
+    table_name CHAR(512),
+    record_id INTEGER
+);
+success!
+timestamp: 2014-04-17T16:28:45.474676
+CREATE TABLE auth_event(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    time_stamp TIMESTAMP,
+    client_ip CHAR(512),
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    origin CHAR(512),
+    description TEXT
+);
+success!
+timestamp: 2014-04-17T16:28:45.547126
+CREATE TABLE auth_cas(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_id INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    created_on TIMESTAMP,
+    service CHAR(512),
+    ticket CHAR(512),
+    renew CHAR(1)
+);
+success!
+timestamp: 2014-04-17T16:28:45.618674
+CREATE TABLE t_appointment(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_title CHAR(512) NOT NULL,
+    f_start_time TIMESTAMP,
+    f_end_time TIMESTAMP,
+    f_location CHAR(512),
+    f_latitude DOUBLE,
+    f_longitude DOUBLE,
+    f_log TEXT,
+    active CHAR(1),
+    created_on TIMESTAMP,
+    modified_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2014-04-17T16:28:45.666577
+CREATE TABLE t_appointment_archive(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    f_title CHAR(512) NOT NULL,
+    f_start_time TIMESTAMP,
+    f_end_time TIMESTAMP,
+    f_location CHAR(512),
+    f_latitude DOUBLE,
+    f_longitude DOUBLE,
+    f_log TEXT,
+    active CHAR(1),
+    created_on TIMESTAMP,
+    modified_on TIMESTAMP,
+    created_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    modified_by INTEGER REFERENCES auth_user (id) ON DELETE CASCADE,
+    current_record INTEGER REFERENCES t_appointment (id) ON DELETE CASCADE
+);
+success!
+timestamp: 2014-04-17T16:30:13.461156
+CREATE TABLE ajax(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT
+);
+success!
+timestamp: 2014-04-17T16:30:13.604252
+CREATE TABLE ajax_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T16:30:13.669966
+CREATE TABLE ajax_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T16:30:13.763921
+CREATE TABLE ajax_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-17T16:38:55.687052
+CREATE TABLE amm(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT
+);
+success!
+timestamp: 2014-04-17T16:38:55.853977
+CREATE TABLE amm_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T16:38:55.958789
+CREATE TABLE amm_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T16:38:56.030769
+CREATE TABLE amm_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-17T21:59:51.242545
+CREATE TABLE abab(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT
+);
+success!
+timestamp: 2014-04-17T21:59:51.388088
+CREATE TABLE abab_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T21:59:51.503026
+CREATE TABLE abab_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T21:59:51.571241
+CREATE TABLE abab_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-17T22:34:27.956024
+CREATE TABLE test(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT
+);
+success!
+timestamp: 2014-04-17T22:34:28.114831
+CREATE TABLE test_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T22:34:28.219923
+CREATE TABLE test_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T22:34:28.319962
+CREATE TABLE test_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-17T22:37:48.920380
+CREATE TABLE test1(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT
+);
+success!
+timestamp: 2014-04-17T22:37:49.090668
+CREATE TABLE test1_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T22:37:49.203965
+CREATE TABLE test1_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T22:37:49.295567
+CREATE TABLE test1_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-17T22:47:32.944091
+CREATE TABLE test2(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-17T22:47:33.100337
+CREATE TABLE test2_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T22:47:33.208935
+CREATE TABLE test2_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T22:47:33.327802
+CREATE TABLE test2_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-17T22:55:28.170007
+CREATE TABLE test3(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time TIME
+);
+success!
+timestamp: 2014-04-17T22:55:28.337486
+CREATE TABLE test3_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T22:55:28.451910
+CREATE TABLE test3_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T22:55:28.580456
+CREATE TABLE test3_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-17T23:16:08.637263
+CREATE TABLE test4(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time TIME
+);
+success!
+timestamp: 2014-04-17T23:16:08.794626
+CREATE TABLE test4_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T23:16:08.902920
+CREATE TABLE test4_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T23:16:09.025227
+CREATE TABLE test4_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-17T23:22:26.894566
+CREATE TABLE test5(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-17T23:22:27.046809
+CREATE TABLE test5_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T23:22:27.156391
+CREATE TABLE test5_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T23:22:27.249266
+CREATE TABLE test5_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-17T23:58:49.434166
+CREATE TABLE moderator_list(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meeting_name CHAR(512),
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-17T23:58:49.537185
+CREATE TABLE user_list(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meeting_name CHAR(512),
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-18T08:58:02.360920
+CREATE TABLE annn(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-18T08:58:02.469955
+CREATE TABLE annn_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-18T08:58:02.559962
+CREATE TABLE annn_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-18T08:58:02.699053
+CREATE TABLE annn_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-18T08:58:08.541892
+CREATE TABLE jkdflg(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-18T08:58:08.718332
+CREATE TABLE jkdflg_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-18T08:58:08.810047
+CREATE TABLE jkdflg_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-18T08:58:08.942791
+CREATE TABLE jkdflg_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-18T08:59:27.079674
+CREATE TABLE ac(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-18T08:59:27.199162
+CREATE TABLE ac_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-18T08:59:27.329555
+CREATE TABLE ac_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-18T08:59:27.420383
+CREATE TABLE ac_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-18T09:14:35.283338
+CREATE TABLE mn(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-18T09:14:35.384614
+CREATE TABLE mn_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-18T09:14:35.484811
+CREATE TABLE mn_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-18T09:14:35.601779
+CREATE TABLE mn_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-18T09:33:45.724967
+CREATE TABLE nbvdfghj(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-18T09:33:45.823293
+CREATE TABLE nbvdfghj_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-18T09:33:45.920397
+CREATE TABLE nbvdfghj_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-18T09:33:46.037618
+CREATE TABLE nbvdfghj_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-22T19:07:20.175966
+CREATE TABLE new(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-22T19:07:20.331257
+CREATE TABLE new_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-22T19:07:20.447124
+CREATE TABLE new_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-22T19:07:20.541687
+CREATE TABLE new_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-22T19:27:02.992081
+CREATE TABLE Mhistory(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meetings CHAR(512)
+);
+success!
+timestamp: 2014-04-22T19:42:33.749985
+CREATE TABLE p(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-22T19:42:33.903614
+CREATE TABLE p_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-22T19:42:33.984966
+CREATE TABLE p_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-22T19:42:34.085095
+CREATE TABLE p_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-22T19:48:33.192553
+CREATE TABLE meeting_list(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meeting_name CHAR(512),
+    moderator_name CHAR(512),
+    subject CHAR(512),
+    location CHAR(512),
+    date and time CHAR(512)
+);
+timestamp: 2014-04-22T19:49:12.556275
+CREATE TABLE meeting_list(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meeting_name CHAR(512),
+    moderator_name CHAR(512),
+    subject CHAR(512),
+    location CHAR(512),
+    date and time CHAR(512)
+);
+timestamp: 2014-04-22T19:49:19.486703
+CREATE TABLE meeting_list(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meeting_name CHAR(512),
+    moderator_name CHAR(512),
+    subject CHAR(512),
+    location CHAR(512),
+    date and time CHAR(512)
+);
+timestamp: 2014-04-22T19:49:21.460953
+CREATE TABLE meeting_list(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meeting_name CHAR(512),
+    moderator_name CHAR(512),
+    subject CHAR(512),
+    location CHAR(512),
+    date and time CHAR(512)
+);
+timestamp: 2014-04-22T19:49:21.801347
+CREATE TABLE meeting_list(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meeting_name CHAR(512),
+    moderator_name CHAR(512),
+    subject CHAR(512),
+    location CHAR(512),
+    date and time CHAR(512)
+);
+timestamp: 2014-04-22T19:49:23.461322
+CREATE TABLE meeting_list(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meeting_name CHAR(512),
+    moderator_name CHAR(512),
+    subject CHAR(512),
+    location CHAR(512),
+    date and time CHAR(512)
+);
+timestamp: 2014-04-22T19:50:23.121784
+CREATE TABLE meeting_list(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meeting_name CHAR(512),
+    moderator_name CHAR(512),
+    subject CHAR(512),
+    location CHAR(512),
+    date CHAR(512)
+);
+success!
+timestamp: 2014-04-22T19:50:38.629519
+CREATE TABLE gd(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-22T19:50:38.756196
+CREATE TABLE gd_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-22T19:50:38.847824
+CREATE TABLE gd_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-22T19:50:38.986344
+CREATE TABLE gd_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-22T20:11:36.139023
+CREATE TABLE t(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-22T20:11:36.313389
+CREATE TABLE t_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-22T20:11:36.426898
+CREATE TABLE t_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-22T20:11:36.513475
+CREATE TABLE t_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-22T22:08:37.842194
+CREATE TABLE y(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-22T22:08:38.021829
+CREATE TABLE y_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-22T22:08:38.124216
+CREATE TABLE y_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-22T22:08:38.213607
+CREATE TABLE y_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-23T11:26:42.655975
+CREATE TABLE testme(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-23T11:26:42.886960
+CREATE TABLE testme_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-23T11:26:42.976541
+CREATE TABLE testme_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-23T11:26:43.065181
+CREATE TABLE testme_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-23T11:45:47.125787
+CREATE TABLE Khistory(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meetings CHAR(512)
+);
+success!
+timestamp: 2014-04-26T13:54:04.445506
+CREATE TABLE profilepics(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    title CHAR(512) UNIQUE,
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-26T13:54:04.572385
+CREATE TABLE M(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meetings CHAR(512)
+);
+success!
+timestamp: 2014-04-26T17:48:00.000949
+ALTER TABLE meeting_list ADD already registered CHAR(1);
+success!
+timestamp: 2014-04-26T18:11:32.174752
+CREATE TABLE w(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-26T18:11:32.342266
+CREATE TABLE w_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-26T18:11:32.433733
+CREATE TABLE w_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-26T18:11:32.567684
+CREATE TABLE w_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-26T18:47:06.150759
+CREATE TABLE o(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meetings CHAR(512)
+);
+success!
+timestamp: 2014-04-26T18:59:54.351543
+CREATE TABLE i(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meetings CHAR(512)
+);
+success!
+timestamp: 2014-04-26T19:08:43.506182
+CREATE TABLE uiu(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-26T19:08:43.670871
+CREATE TABLE uiu_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-26T19:08:43.772662
+CREATE TABLE uiu_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-26T19:08:43.845955
+CREATE TABLE uiu_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-26T19:20:00.266251
+CREATE TABLE h(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-26T19:20:00.430216
+CREATE TABLE h_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-26T19:20:00.528900
+CREATE TABLE h_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-26T19:20:00.605486
+CREATE TABLE h_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-26T21:21:35.721301
+CREATE TABLE l(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meetings CHAR(512)
+);
+success!
+timestamp: 2014-04-26T22:08:42.012101
+CREATE TABLE stack(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-26T22:08:42.224126
+CREATE TABLE stack_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-26T22:08:42.296441
+CREATE TABLE stack_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-26T22:08:42.379846
+CREATE TABLE stack_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!

@@ -1,0 +1,15 @@
+<br>
+
+<div id="log">
+<h1 style="color:black">
+<h1>Register for your Meet</h1>
+{{extend 'layout.html'}}
+<div>
+{{=form}}
+</div>
+<p>Meetings to be attended<p>
+{{for i in session.list:}}
+<b>{{=i[1]}}</b><br>
+{{pass}}
+<button onclick="location.href='meets'">Meetings</button>
+

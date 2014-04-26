@@ -1,0 +1,13 @@
+{{extend 'layout.html'}}
+<table>
+{{for i in session.list:}}
+<h4><tr><strong>{{=i}}--></strong><button onclick="ajax('{{=URL('ninth',args=[i,session.meeting_name])}}',[],null);">add</button></tr></h4>
+<form>
+<input type="checkbox" name="Board" value="Bike">Board_member
+<input type="checkbox" name="team" value="Car">Team_leader
+<input type="checkbox" name="employee" value="Car">employee
+</form> 
+
+{{pass}}
+</table>
+

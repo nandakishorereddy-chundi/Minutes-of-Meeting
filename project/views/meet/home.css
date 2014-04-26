@@ -1,0 +1,210 @@
+body{
+background-image:url('../static/images/back.jpg');
+	background-size:40px 40px;
+
+}
+a{
+text-decoration:none;
+}
+a:hover{
+text-decoration:underline;
+}
+
+#categories{
+	display:inline;
+	text-decoration: none;
+	overflow: hidden;
+	float: left;
+	
+
+}
+#background-image1{
+	position: absolute;
+	width:1250px;
+}
+
+#sportsimg{
+		position: absolute;
+		top:475px;
+		overflow:hidden;
+ 		height:200px;
+		width:400px;
+		left:49px;
+	
+}
+#popup_for_sports{
+		position: absolute;
+		background-color:#FFCC00;
+		opacity:0;
+		left:49px;
+		top:560px;
+ 		height:100px;
+		width:400px;
+}
+#popup_for_sports:hover{
+	opacity:0.75;
+	transition:opacity 0.25s;
+	-moz-transition:opacity 1s;
+	-webkit-transition:opacity 1s;
+}
+
+#moviesimg{
+		position: absolute;
+		left: 475px;
+	 	height :200px; 
+		width:400px;
+		top: 475px;
+}
+
+#popup_for_movies{
+		position: absolute;
+		background-color:#FFCC00;
+		opacity:0;
+		left:475px;
+		top:560px;
+ 		height:100px;
+		width:400px;
+}
+#popup_for_movies:hover{
+	opacity:0.75;
+	transition:opacity 0.25s;
+	-moz-transition:opacity 1s;
+	-webkit-transition:opacity 1s;
+}
+
+
+#scienceimg{
+		position: absolute;
+		left: 900px;
+	        height :200px;
+	        width:400px;
+		top: 475px;
+}
+
+#popup_for_science{
+		position: absolute;
+		background-color:#FFCC00;
+		opacity:0;
+		left:900px;
+		top:560px;
+ 		height:100px;
+		width:400px;
+}
+#popup_for_science:hover{
+	opacity:0.75;
+	transition:opacity 0.25s;
+	-moz-transition:opacity 1s;
+	-webkit-transition:opacity 1s;
+}
+#historyimg{
+		position: absolute;
+	        height :200px;
+	        width:400px;
+		top: 760px;
+		left:49px;
+}
+
+
+#popup_for_history{
+		position: absolute;
+		background-color:#FFCC00;
+		opacity:0;
+		left:49px;
+		top:860px;
+ 		height:100px;
+		width:400px;
+}
+#popup_for_history:hover{
+	opacity:0.75;
+	transition:opacity 0.25s;
+	-moz-transition:opacity 1s;
+	-webkit-transition:opacity 1s;
+}
+
+#artimg{
+		position: absolute;
+		left: 475px;
+	        height :200px;
+	        width:400px;
+		top: 760px;
+}
+
+
+#popup_for_art{
+		position: absolute;
+		background-color:#FFCC00;
+		opacity:0;
+		left:475px;
+		top:860px;
+ 		height:100px;
+		width:400px;
+}
+#popup_for_art:hover{
+	opacity:0.75;
+	transition:opacity 0.25s;
+	-moz-transition:opacity 1s;
+	-webkit-transition:opacity 1s;
+}
+
+#picimg{
+		position: absolute;
+		left: 900px;
+	        height :200px;
+	        width:400px;
+		top: 760px;
+}
+
+
+#popup_for_pics{
+		position: absolute;
+		background-color:#FFCC00;
+		opacity:0;
+		left:900px;
+		top:860px;
+ 		height:100px;
+		width:400px;
+}
+#popup_for_pics:hover{
+	opacity:0.75;
+	transition:opacity 0.25s;
+	-moz-transition:opacity 1s;
+	-webkit-transition:opacity 1s;
+}
+
+#footer
+{
+position:absolute;
+top:1000px;
+left:-10px
+width:90%;
+height:200px;
+
+}
+
+#carousel {
+        position:absolute;
+        width: 1250px;
+        left:51px;
+        overflow:hidden;
+   }
+
+#carousel ul {
+        width: 5000px;
+        padding: 0;
+        margin: 0;
+   }
+
+#carousel ul li {
+        width:1250px;
+        text-align: center;
+        height: 600px;
+        list-style: none;
+        float: left;
+}
+#car
+{
+height:400px;
+width:1250px;
+}
+
+

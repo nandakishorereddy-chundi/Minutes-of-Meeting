@@ -1,0 +1,8 @@
+<ul>
+{{for i in text:}}
+{{if i.user_name == name:}}
+<INPUT type="button" id={{=i.body}} value={{=i.time}} onclick = "call({{=i.id}})">
+</br>
+{{pass}}
+{{pass}}
+</ul>

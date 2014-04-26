@@ -1,0 +1,7 @@
+{{extend 'layout.html'}}
+<div style="position:relative;right:150px;">
+<h1>Welcome to Minutes Of Meeting</h1>
+    <a class="btn btn-primary" href="{{=URL('tenth')}}" style="font-size:30px">User</a><br>
+    <a class="btn btn-primary" href="{{=URL('user/register')}}" style="font-size:30px">Register</a><br>
+    <a class="btn btn-primary" href="{{=URL('first')}}" style="font-size:30px">Moderator</a>
+</div>

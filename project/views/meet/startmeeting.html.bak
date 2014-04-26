@@ -1,0 +1,83 @@
+{{extend 'layout.html'}}
+<script>
+function call(id){
+	var xmlhttp;
+	xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
+	{
+            if(xmlhttp.readyState==4 && xmlhttp.status==200)
+		document.getElementById("set").innerHTML=xmlhttp.responseText;
+	}
+	xmlhttp.open('GET','http://127.0.0.1:8000/project/meet/sixth?start='+'{{=name}}'+'/'+id,true);
+	xmlhttp.send();
+}
+function fun(){
+	var k = document.getElementById("body").value
+	var k1 = document.getElementById("user_name").value
+	document.getElementById("body").value = ""
+	document.getElementById("user_name").value = ""
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
+	{
+            if(xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		document.getElementById("mylist").innerHTML=xmlhttp.responseText;
+	    }
+	}
+	xmlhttp.open('GET','http://127.0.0.1:8000/project/meet/seventh?start='+'{{=name}}'+'/'+k+'/'+k1,true);
+	xmlhttp.send();
+}
+function find_user()
+{
+	var k = document.getElementById("user_search").value
+	document.getElementById("user_search").value = ""
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange=function()
+	{
+            if(xmlhttp.readyState==4 && xmlhttp.status==200)
+	    {
+		document.getElementById("mylist").innerHTML=xmlhttp.responseText;
+	    }
+	}
+	xmlhttp.open('GET','http://127.0.0.1:8000/project/meet/eight?start='+'{{=name}}'+'/'+k,true);
+	xmlhttp.send();
+}
+function addUser()
+{
+	var k = document.getElementById("add_user").value;
+	document.getElementById("add_user").value = "";
+	var xmlhttp = new XMLHttpRequest();
+	xmlhttp.onreadystatechange = function()
+	{
+		if(xmlhttp.readyState==4 && xmlhttp.status==200)
+		{
+		    document.getElementById("user_list").innerHTML=xmlhttp.responseText;
+		}
+	}
+	xmlhttp.open('GET','http://127.0.0.1:8000/project/meet/ninth?start={{=name}}/'+k,true);
+	xmlhttp.send();
+}
+</script>
+<div id="mylist" style="position:absolute;left:1000px;overflow:auto;height:300px;width:350px">
+<ul>
+{{for i in text:}}
+    <INPUT type="button" id={{=i.body}}  value = {{=a}}
+       onclick="call({{=i.id}})"/><br/><br/>
+{{pass}}
+</ul>
+</div>
+<div id="set"></div>
+<!--User:<input id="body" type="text">-->
+    <div style="position:absolute;left:150px;top:260px">
+    User:<input x-webkit-speech id="body" type="text"/>
+    <br/><br/>
+    Text:<input id="user_name" type="text"/><br/><br/>
+<button onclick="fun()" style="position:absolute;left:200px">Submit</button>
+</div>
+<div id="user_list">
+<ul>
+{{for i in names:}}
+    {{=i.user_name}}<br/>
+{{pass}}
+</ul>
+</div>
