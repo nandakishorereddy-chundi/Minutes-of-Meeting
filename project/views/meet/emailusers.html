@@ -1,0 +1,11 @@
+{{extend 'layout.html'}}
+{{=form1}}
+<div id="mylist">
+<ul>
+{{for i in text:}}
+{{=i}}
+<INPUT type="button" id={{=i}}  value = {{=i.time}}/><br>
+{{pass}}
+</ul>
+</div>
+

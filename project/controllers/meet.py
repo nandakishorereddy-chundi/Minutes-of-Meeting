@@ -51,7 +51,7 @@ def first():
 	    DB.define_table(name,Field('user_name','string',requires=IS_NOT_EMPTY()),
 			    Field('body','text', requires=IS_NOT_EMPTY()),Field('time','string'),migrate=True)#,format=lambda r: r.name or 'anonymous')
 	    DB.define_table(name+'_'+'names',Field('user_name','string', requires=IS_NOT_EMPTY()),migrate=True)
-	    DB.define_table(name+'_'+'users',Field('user_name','string', requires=IS_NOT_EMPTY()),migrate=True)
+	    DB.define_table(name+'_'+'users',Field('user_name','string', requires=IS_NOT_EMPTY()),Field('email',requires=IS_EMAIL()),migrate=True)
 	    DB.define_table(name+'_'+'files',Field('user_name','string', requires=IS_NOT_EMPTY()),Field('file','upload'))
 	print "&&&&&&&&&&&&&&&&&"
         tb2.insert(user_name=user,meeting_name=name)	
@@ -73,14 +73,18 @@ def fourth():
     tb3 = DB[name+'_'+'users']
     form1 = SQLFORM(tb2)
     form = SQLFORM.factory(Field('user_name','string',requires=IS_IN_DB(DB,tb3.user_name)),Field('body','text',requires=IS_NOT_EMPTY()))
+    form3 = SQLFORM.factory(Field('meeting_name',requires=IS_NOT_EMPTY()))
+		
     if form.process(formname='form').accepted:
 	tb.insert(user_name=form.vars.user_name,body=form.vars.body,time=time.strftime("%d-%a/%H:%M:%S"))
         response.flash = T("Ur notes is updated!")
     if form1.process(formname='form_one').accepted:
-        response.flash = T("Ur file is uploaded!")
+        response.flash = T("Ur file is uploaded!")	
     text = DB().select(tb.ALL ,orderby=tb.id)
     names = DB().select(tb1.ALL,orderby=tb1.id)
-    return dict(text = text,name=name,names=names,form=form,form1=form1)
+    if form3.process().accepted:
+	redirect (URL('emailusers', vars={'meeting_name': form3.vars.meeting_name}))
+    return dict(text = text,name=name,names=names,form=form,form1=form1,form3=form3)
 
 def startmeeting():
     import time
@@ -103,6 +107,7 @@ def fileupload():
 def sixth():
     name = request.get_vars['start'].split('/')
     tb = DB[name[0]]
+    print name[0]
     j = tb(int(name[1])) or redirect(URL('fourth'))
     print "sixth",j
     return dict(name=j)
@@ -148,6 +153,7 @@ def ninth():
 
 
 @auth.requires_login()
+
 def tenth():
 	user='%(first_name)s'%auth.user
         tb1=DB['moderator_list']
@@ -162,9 +168,10 @@ def tenth():
 	response.flash=T('check1')
 	if table_name not in DB.tables:
              DB.define_table(table_name,Field('meetings'))
-	form = SQLFORM.factory(Field('register_to_meeting',requires=IS_NOT_EMPTY()))
+	form = SQLFORM.factory(Field('register_to_meeting',requires=IS_NOT_EMPTY()),Field('email',requires=IS_EMAIL()))
 	if form.process().accepted:
 		name=form.vars.register_to_meeting
+		emailid=form.vars.email
 		response.flash=T(name)
 		response.flash=T('check2')
 		meet_name=name+'_'+'users'
@@ -172,7 +179,7 @@ def tenth():
 			response.flash=T('Meeting not registered')
 		else:
 			tb=DB[name+'_'+'users']
-			tb.insert(user_name=user)
+			tb.insert(user_name=user,email=emailid)
 			response.flash=T('registration successful')
 		print user+'i am user'
 	session.list=[]
@@ -234,10 +241,34 @@ def showmeet():
 	        print "row found"
     return dict(name=name)
 
+def emailusers():
+	 user='%(first_name)s'%auth.user
+	 meet=request.vars.meeting_name
+	 form1 = SQLFORM.factory(Field('body','text',requires=IS_NOT_EMPTY()))
+	 if form1.process().accepted:
+	 	redirect (URL('email', vars={'meeting_name': meet ,'body':form1.vars.body }))
+	 tb=DB['moderator_list']
+	 test=DB().select(tb.ALL,orderby=tb.id)
+	 tb2=DB[meet]
+    	 text=DB().select(tb2.ALL,orderby=tb2.id)
+	 return dict(form1=form1,text=text,meeting_name=meet)
 
-
-
-
-
-
-	
+def email():
+	   meet=request.vars.meeting_name
+	   body=request.vars.body
+	   name=meet+'_users'
+	   tb=DB[name]
+	   text=DB().select(tb.ALL,orderby=tb.id)
+	   list=[]
+	   for i in text:
+	   	print "emai is " +i.email
+	   	list.append(i.email)
+	   print list
+	   from gluon.tools import Mail
+           mail = Mail()
+           mail.settings.server = 'students.iiit.ac.in:25'
+           mail.settings.sender = 'srikailash.gandebathula@students.iiit.ac.in'
+           mail.settings.login = 'srikailash.gandebathula:24101995'
+	   for i in list:
+		mail.send(to=[i],subject='Regarding '+meet, message=body)
+	   redirect (URL('index'))

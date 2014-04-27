@@ -859,3 +859,91 @@ CREATE TABLE stack_files(
     file CHAR(512)
 );
 success!
+timestamp: 2014-04-27T08:47:33.867352
+CREATE TABLE point(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-27T08:47:34.053917
+CREATE TABLE point_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-27T08:47:34.137024
+CREATE TABLE point_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-27T08:47:34.250893
+CREATE TABLE point_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-27T09:34:56.479962
+CREATE TABLE ppo(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-27T09:34:56.669001
+CREATE TABLE ppo_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-27T09:34:56.768964
+CREATE TABLE ppo_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-27T09:34:56.894504
+CREATE TABLE ppo_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-27T11:03:41.217378
+CREATE TABLE testemail(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    body TEXT,
+    time CHAR(512)
+);
+success!
+timestamp: 2014-04-27T11:03:41.396815
+CREATE TABLE testemail_names(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512)
+);
+success!
+timestamp: 2014-04-27T11:03:41.480598
+CREATE TABLE testemail_users(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    email CHAR(512)
+);
+success!
+timestamp: 2014-04-27T11:03:41.555703
+CREATE TABLE testemail_files(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    user_name CHAR(512),
+    file CHAR(512)
+);
+success!
+timestamp: 2014-04-27T11:41:24.869814
+CREATE TABLE b(
+    id INTEGER PRIMARY KEY AUTOINCREMENT,
+    meetings CHAR(512)
+);
+success!
