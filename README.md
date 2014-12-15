@@ -1,9 +1,6 @@
-Cloth-Data-Base
-===============
-This Project is to make a Data Base for a Cloth Shop.
-In Detail:
-	 1.There will be 2 users
-	 2.one will be Admin who owns the shop and other will be cashier who collects money from the customers by selling clothes
-	 3.Admin takes care of Retailers,Clothes brought from Retailers,Number of Cashiers in his shop and there credentials,Expenditure
-	 4.Cashier takes care of discount of clothes,date and time of discounts,billing,etc...
-	 5.Customer info is also stored in our database for future uses
+Minutes-of-Meeting
+==================
+This Project is based on web2py framework
+There will be a meeting going on, My project is to store all the meeting minutes user wise and display the content when ever a particular user wants to view his meeting minutes for a particular time
+There will be two suers in this project
+One is Project Care taker that is who take cares of above job and other is Project member who wants to view his meeting minutes at some particular time
